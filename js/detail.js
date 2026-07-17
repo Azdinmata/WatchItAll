@@ -69,7 +69,7 @@ const DetailSection = {
     /* Backdrop */
     const backdropEl = document.getElementById('detail-backdrop');
     if (detail.backdrop_path) {
-      backdropEl.src = `${CONFIG.IMG_BASE}/w1280${detail.backdrop_path}`;
+      backdropEl.src = `${CONFIG.IMG_BASE}/w780${detail.backdrop_path}`;
     }
 
     /* Rating badge (poster column) */

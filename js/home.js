@@ -12,7 +12,7 @@ const HomeSection = {
 
     try {
       const data = await TMDB.getLatest(type, endpoint);
-      const items = (data.results || []).slice(0, 35);
+      const items = (data.results || []).slice(0, 20);
       UI.renderCarousel(container, items, { mediaType: type });
     } catch (e) {
       console.error(`Failed to load ${label}:`, e);

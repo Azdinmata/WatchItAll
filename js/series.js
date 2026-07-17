@@ -151,13 +151,13 @@ const SeriesSection = {
     if (!this.hasMore && this.allItems.length <= this.currentPage * CONFIG.PAGE_SIZE) return;
     this.currentPage++;
     this.load();
-    window.scrollTo({ top: document.getElementById('section-series').offsetTop - 60, behavior: 'smooth' });
+    window.scrollTo({ top: document.getElementById('section-series').offsetTop - 60, behavior: 'instant' });
   },
 
   prevPage() {
     if (this.currentPage <= 1) return;
     this.currentPage--;
     this.load();
-    window.scrollTo({ top: document.getElementById('section-series').offsetTop - 60, behavior: 'smooth' });
+    window.scrollTo({ top: document.getElementById('section-series').offsetTop - 60, behavior: 'instant' });
   },
 };
