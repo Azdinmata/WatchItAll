@@ -1,0 +1,157 @@
+@media (max-width: 1024px) {
+  .auth-split {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-arrow {
+    display: none !important;
+  }
+
+  #content-sections {
+    padding: 12px 16px 76px;
+  }
+
+  .content-section {
+    padding: 16px;
+  }
+
+  #top-bar {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .top-bar-left {
+    gap: 12px;
+  }
+
+  .top-bar-right {
+    gap: 10px;
+  }
+
+  .opacity-control {
+    display: none;
+  }
+
+  .top-logo h1 {
+    font-size: 1.1rem;
+  }
+
+  #bottom-nav {
+    display: flex;
+    height: 54px;
+  }
+
+  .top-nav {
+    display: none !important;
+  }
+
+  .bottom-nav-item span {
+    display: none;
+  }
+
+  .bottom-nav-item {
+    padding: 6px 10px;
+    min-width: 48px;
+  }
+
+  .bottom-nav-item i {
+    font-size: 1.3rem;
+  }
+
+  .poster-card {
+    width: 150px;
+  }
+
+  .carousel {
+    gap: 12px;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .filter-ribbon {
+    flex-direction: column;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .library-tabs {
+    flex-direction: column;
+  }
+
+  .auth-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #top-bar {
+    padding: 0 8px;
+    gap: 6px;
+  }
+
+  .top-bar-left {
+    gap: 8px;
+  }
+
+  .top-bar-right {
+    gap: 6px;
+  }
+
+  .top-logo h1 {
+    font-size: 1rem;
+  }
+
+  #bottom-nav {
+    height: 48px;
+  }
+
+  .bottom-nav-item {
+    min-width: 44px;
+    padding: 4px 8px;
+  }
+
+  .bottom-nav-item i {
+    font-size: 1.2rem;
+  }
+
+  .content-section {
+    padding: 12px;
+  }
+
+  .poster-card {
+    width: 130px;
+  }
+
+  .carousel {
+    gap: 10px;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+  }
+
+  .poster-card .poster-info {
+    padding: 6px;
+  }
+
+  .poster-card .poster-title {
+    font-size: 0.78rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}

@@ -1,0 +1,127 @@
+.sidebar-header {
+  padding: 20px 16px 12px;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#sidebar-close {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  padding: 4px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--primary-glow);
+}
+
+.logo h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.sidebar-nav {
+  padding: 12px 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--border-radius-md);
+  color: var(--text-secondary);
+  transition: all var(--transition-speed) ease;
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-item:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background: var(--active-bg);
+  color: var(--primary);
+}
+
+.nav-icon {
+  font-size: 1rem;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  flex: 1;
+}
+
+.nav-chevron {
+  font-size: 0.65rem;
+  transition: transform var(--transition-speed) ease;
+  opacity: 0.5;
+}
+
+.nav-group.open .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-sublist {
+  display: none;
+  padding-left: 36px;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-group.open .nav-sublist {
+  display: flex;
+}
+
+.nav-subitem {
+  padding: 7px 14px;
+  border-radius: var(--border-radius-sm);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-subitem i {
+  width: 14px;
+  text-align: center;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.nav-subitem:hover {
+  color: var(--text-primary);
+  background: var(--hover-bg);
+}
+
+.nav-subitem.active {
+  color: var(--primary);
+}

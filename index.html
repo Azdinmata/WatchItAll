@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WatchItAll</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/glassmorphism.css">
+  <link rel="stylesheet" href="css/layout.css?v=2">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/library.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/stream.css">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+  <div id="app">
+    <div id="space-bg"></div>
+
+
+
+    <main id="main-content">
+      <header id="top-bar">
+        <div class="top-bar-left">
+          <div class="top-logo" id="logo-link">
+            <i class="fas fa-star logo-icon"></i>
+            <h1>WatchItAll</h1>
+          </div>
+        </div>
+        <div class="top-bar-right">
+          <nav class="top-nav">
+            <a href="#home" class="top-nav-item active" data-section="home"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="#movies" class="top-nav-item" data-section="movies"><i class="fas fa-film"></i> <span>Movies</span></a>
+            <a href="#series" class="top-nav-item" data-section="series"><i class="fas fa-tv"></i> <span>Series</span></a>
+            <a href="#library" class="top-nav-item" data-section="library"><i class="fas fa-bookmark"></i> <span>Library</span></a>
+          </nav>
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+          <div class="opacity-control" title="Adjust glass opacity">
+            <label for="opacity-slider"><i class="fas fa-eye"></i></label>
+            <input type="range" id="opacity-slider" min="0.65" max="0.9" step="0.05" value="0.8">
+          </div>
+        </div>
+      </header>
+      <div id="content-sections">
+        <section id="section-home" class="content-section active">
+          <div class="carousel-section">
+            <h2 class="section-title"><i class="fas fa-star"></i> Top Rated Movies</h2>
+            <div class="carousel" data-type="movie" data-endpoint="top_rated"></div>
+          </div>
+          <div class="carousel-section">
+            <h2 class="section-title"><i class="fas fa-star"></i> Top Rated Series</h2>
+            <div class="carousel" data-type="tv" data-endpoint="top_rated"></div>
+          </div>
+          <div class="carousel-section">
+            <h2 class="section-title"><i class="fas fa-clock"></i> Newest Movies</h2>
+            <div class="carousel" data-type="movie" data-endpoint="now_playing"></div>
+          </div>
+          <div class="carousel-section">
+            <h2 class="section-title"><i class="fas fa-clock"></i> Newest Series</h2>
+            <div class="carousel" data-type="tv" data-endpoint="on_the_air"></div>
+          </div>
+        </section>
+
+        <section id="section-movies" class="content-section">
+          <div class="browse-controls glass">
+            <div class="search-wrapper">
+              <input type="text" id="movie-search" class="search-input" placeholder="Search movies...">
+            </div>
+            <div class="filter-ribbon">
+              <select id="movie-genre" class="filter-select">
+                <option value="">All Genres</option>
+              </select>
+              <select id="movie-language" class="filter-select">
+                <option value="">All Languages</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+                <option value="hi">Hindi</option>
+                <option value="ar">Arabic</option>
+                <option value="zh">Chinese</option>
+              </select>
+              <select id="movie-rating" class="filter-select">
+                <option value="">All Ratings</option>
+                <option value="7">7+</option>
+                <option value="8">8+</option>
+                <option value="9">9+</option>
+              </select>
+              <select id="movie-year" class="filter-select">
+                <option value="">All Years</option>
+              </select>
+            </div>
+          </div>
+          <div id="movie-grid" class="results-grid"></div>
+          <div id="movie-pagination"></div>
+          <div class="loading-indicator" id="movie-loading">Loading more...</div>
+        </section>
+
+        <section id="section-series" class="content-section">
+          <div class="browse-controls glass">
+            <div class="search-wrapper">
+              <input type="text" id="series-search" class="search-input" placeholder="Search series...">
+            </div>
+            <div class="filter-ribbon">
+              <select id="series-genre" class="filter-select">
+                <option value="">All Genres</option>
+              </select>
+              <select id="series-language" class="filter-select">
+                <option value="">All Languages</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+                <option value="hi">Hindi</option>
+                <option value="ar">Arabic</option>
+                <option value="zh">Chinese</option>
+              </select>
+              <select id="series-rating" class="filter-select">
+                <option value="">All Ratings</option>
+                <option value="7">7+</option>
+                <option value="8">8+</option>
+                <option value="9">9+</option>
+              </select>
+              <select id="series-year" class="filter-select">
+                <option value="">All Years</option>
+              </select>
+            </div>
+          </div>
+          <div id="series-grid" class="results-grid"></div>
+          <div id="series-pagination"></div>
+          <div class="loading-indicator" id="series-loading">Loading more...</div>
+        </section>
+
+        <section id="section-library" class="content-section">
+          <div class="library-tabs glass">
+            <button class="lib-tab active" data-tab="account"><i class="fas fa-user"></i> Account</button>
+            <button class="lib-tab" data-tab="bookmarks"><i class="fas fa-bookmark"></i> Bookmarks</button>
+            <button class="lib-tab" data-tab="history"><i class="fas fa-clock"></i> History</button>
+          </div>
+          <div id="library-account" class="lib-panel active">
+            <div id="account-logged-out">
+              <div class="auth-split">
+                <div class="auth-panel glass">
+                  <h3>Create Account</h3>
+                  <form id="register-form">
+                    <input type="text" id="reg-username" placeholder="Username" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                  </form>
+                </div>
+                <div class="auth-panel glass">
+                  <h3>Log In</h3>
+                  <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Log In</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div id="account-logged-in" class="hidden">
+              <div class="settings-panel glass">
+                <div class="avatar-section">
+                  <div id="avatar-preview" class="avatar-circle">
+                    <img id="avatar-img" src="" alt="Avatar">
+                    <span id="avatar-placeholder">&#128100;</span>
+                  </div>
+                  <label class="avatar-upload-btn btn-secondary">
+                    Upload Photo
+                    <input type="file" id="avatar-input" accept="image/*">
+                  </label>
+                </div>
+                <form id="settings-form">
+                  <input type="text" id="settings-username" placeholder="Username">
+                  <input type="email" id="settings-email" placeholder="Email">
+                  <input type="password" id="settings-password" placeholder="New Password">
+                  <button type="submit" class="btn-primary">Save Settings</button>
+                </form>
+                <button id="logout-btn" class="btn-danger">Log Out</button>
+              </div>
+            </div>
+          </div>
+          <div id="library-bookmarks" class="lib-panel">
+            <div class="results-grid" id="bookmarks-grid"></div>
+            <p class="empty-state" id="bookmarks-empty">No bookmarks yet.</p>
+          </div>
+          <div id="library-history" class="lib-panel">
+            <div class="results-grid" id="history-grid"></div>
+            <p class="empty-state" id="history-empty">No history yet.</p>
+          </div>
+        </section>
+
+        <section id="section-detail" class="content-section">
+          <button id="detail-back" class="detail-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+          <div id="detail-content">
+            <div class="detail-hero">
+              <div class="detail-backdrop-wrap">
+                <img id="detail-backdrop" class="detail-backdrop" src="" alt="">
+              </div>
+              <div class="detail-poster-col">
+                <div class="detail-poster-wrapper">
+                  <img id="detail-poster" class="detail-poster" src="" alt="">
+                  <button id="detail-bookmark" class="detail-bookmark-btn"><i class="far fa-bookmark"></i></button>
+                  <div class="detail-rating-badge" id="detail-rating-badge">
+                    <i class="fab fa-imdb"></i>
+                    <span id="detail-rating-score"></span>
+                  </div>
+                </div>
+                <a id="detail-cta" class="detail-cta-btn" href="#"><i class="fas fa-play"></i> Watch Now</a>
+              </div>
+              <div class="detail-hero-info">
+                <h1 id="detail-title" class="detail-title"></h1>
+
+                <div class="detail-meta-pills" id="detail-meta-pills">
+                  <span class="meta-pill" id="detail-pill-type"><i class="fas fa-film"></i></span>
+                  <span class="meta-sep">•</span>
+                  <span class="meta-pill" id="detail-pill-year"><i class="fas fa-calendar"></i></span>
+                  <span class="meta-sep">•</span>
+                  <span class="meta-pill" id="detail-pill-duration"><i class="fas fa-clock"></i></span>
+                  <span class="meta-sep">•</span>
+                  <span class="meta-pill" id="detail-pill-language"><i class="fas fa-globe"></i></span>
+                </div>
+
+                <div class="detail-tags" id="detail-tags"></div>
+
+                <div class="detail-synopsis-wrap">
+                  <h3 class="detail-synopsis-heading"><i class="fas fa-quote-left"></i> Synopsis</h3>
+                  <p class="detail-overview" id="detail-overview">Loading...</p>
+                </div>
+
+                <div class="detail-details-strip" id="detail-details-strip"></div>
+              </div>
+            </div>
+
+            <div class="detail-section" id="detail-cast-section">
+              <h3 class="detail-section-heading"><i class="fas fa-users"></i> Cast</h3>
+              <div id="detail-cast" class="detail-cast-scroll"></div>
+            </div>
+
+            <div id="detail-series-module" class="detail-section hidden">
+              <h3 class="detail-section-heading"><i class="fas fa-list"></i> Seasons &amp; Episodes</h3>
+              <div class="season-list" id="season-list"></div>
+            </div>
+
+            <div class="detail-recommendations">
+              <h2 class="section-title"><i class="fas fa-film"></i> <span id="rec-heading">Similar Titles</span></h2>
+              <div class="carousel" id="rec-carousel"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-stream" class="content-section">
+          <button id="stream-back" class="detail-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+          <div id="stream-content">
+            <div class="stream-title-wrap">
+              <h2 id="stream-title" class="stream-title">Loading...</h2>
+            </div>
+
+            <div class="stream-episode-nav hidden" id="stream-episode-nav">
+              <label><i class="fas fa-list"></i> Season:
+                <select id="stream-season" class="stream-select"></select>
+              </label>
+              <label><i class="fas fa-list"></i> Episode:
+                <select id="stream-episode" class="stream-select"></select>
+              </label>
+            </div>
+
+            <div class="stream-player-wrap hidden" id="stream-player-wrap">
+              <iframe id="stream-iframe" class="stream-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            </div>
+
+            <div class="stream-section-heading"><i class="fas fa-server"></i> Servers</div>
+            <div class="stream-servers" id="stream-servers"></div>
+          </div>
+        </section>
+      </div>
+
+      <nav id="bottom-nav">
+        <a href="#home" class="bottom-nav-item active" data-section="home"><i class="fas fa-home"></i> <span>Home</span></a>
+        <a href="#movies" class="bottom-nav-item" data-section="movies"><i class="fas fa-film"></i> <span>Movies</span></a>
+        <a href="#series" class="bottom-nav-item" data-section="series"><i class="fas fa-tv"></i> <span>Series</span></a>
+        <a href="#library" class="bottom-nav-item" data-section="library"><i class="fas fa-bookmark"></i> <span>Library</span></a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/series.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/detail.js"></script>
+  <script src="js/stream.js"></script>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>

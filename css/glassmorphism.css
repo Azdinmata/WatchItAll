@@ -1,0 +1,15 @@
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(max(var(--glass-blur), var(--glass-blur-min)));
+  -webkit-backdrop-filter: blur(max(var(--glass-blur), var(--glass-blur-min)));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+
+.glass-strong {
+  background: var(--card-bg);
+  backdrop-filter: blur(max(var(--glass-blur), var(--glass-blur-min)));
+  -webkit-backdrop-filter: blur(max(var(--glass-blur), var(--glass-blur-min)));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}

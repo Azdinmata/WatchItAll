@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "guardian",
+  "agent": {
+    "builder": {
+      "description": "Builds features, writes code, implements changes for the WatchItAll project.",
+      "mode": "subagent",
+      "model": "opencode/big-pickle",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
+      }
+    },
+    "reviewer": {
+      "description": "Reviews code for bugs, security issues, clichés, and weak patterns in the WatchItAll project.",
+      "mode": "subagent",
+      "model": "opencode/big-pickle",
+      "permission": {
+        "edit": "deny",
+        "bash": "ask",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+node_modules/
+android/
+www/
+.opencode/
+.DS_Store
+*.log
