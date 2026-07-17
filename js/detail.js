@@ -430,6 +430,7 @@ const DetailSection = {
 
   back() {
     const target = this.prevSection || '#home';
+    window.__isBack = true;
     window.location.hash = target;
   },
 };

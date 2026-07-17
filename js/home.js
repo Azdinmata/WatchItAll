@@ -1,5 +1,9 @@
 const HomeSection = {
   async init() {
+    this.refresh();
+  },
+
+  async refresh() {
     this.loadCarousel('[data-type="movie"][data-endpoint="top_rated"]', 'movie', 'top_rated', 'Top Rated Movies');
     this.loadCarousel('[data-type="tv"][data-endpoint="top_rated"]', 'tv', 'top_rated', 'Top Rated Series');
     this.loadCarousel('[data-type="movie"][data-endpoint="now_playing"]', 'movie', 'now_playing', 'Newest Movies');

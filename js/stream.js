@@ -180,6 +180,7 @@ const StreamSection = {
   back() {
     document.getElementById('stream-iframe').src = '';
     document.getElementById('stream-player-wrap').classList.add('hidden');
+    window.__isBack = true;
     if (this.currentType && this.currentId) {
       window.location.hash = `#detail/${this.currentType}/${this.currentId}`;
     } else {

@@ -357,6 +357,10 @@ const UI = {
 };
 const HomeSection = {
   async init() {
+    this.refresh();
+  },
+
+  async refresh() {
     this.loadCarousel('[data-type="movie"][data-endpoint="top_rated"]', 'movie', 'top_rated', 'Top Rated Movies');
     this.loadCarousel('[data-type="tv"][data-endpoint="top_rated"]', 'tv', 'top_rated', 'Top Rated Series');
     this.loadCarousel('[data-type="movie"][data-endpoint="now_playing"]', 'movie', 'now_playing', 'Newest Movies');
@@ -706,6 +710,10 @@ const SeriesSection = {
 const LibrarySection = {
   init() {
     this.bindEvents();
+    this.refresh();
+  },
+
+  refresh() {
     this.updateAuthUI();
     this.loadBookmarks();
     this.loadHistory();
@@ -1276,6 +1284,7 @@ const DetailSection = {
 
   back() {
     const target = this.prevSection || '#home';
+    window.__isBack = true;
     window.location.hash = target;
   },
 };
@@ -1461,6 +1470,7 @@ const StreamSection = {
   back() {
     document.getElementById('stream-iframe').src = '';
     document.getElementById('stream-player-wrap').classList.add('hidden');
+    window.__isBack = true;
     if (this.currentType && this.currentId) {
       window.location.hash = `#detail/${this.currentType}/${this.currentId}`;
     } else {
@@ -1471,6 +1481,7 @@ const StreamSection = {
 let cachedSections = null;
 let cachedNavItems = null;
 const contentWrap = () => document.getElementById('content-sections');
+let previousRoute = '#home';
 
 function getSections() {
   if (!cachedSections) cachedSections = document.querySelectorAll('.content-section');
@@ -1488,14 +1499,28 @@ function clearNavCache() {
 
 document.addEventListener('DOMContentLoaded', () => {
   AppState.init();
-  initRouter();
+
+  window.addEventListener('popstate', () => {
+    window.__isBack = true;
+  });
+
+  window.addEventListener('hashchange', () => {
+    clearNavCache();
+    navigate(window.location.hash, !window.__isBack);
+    window.__isBack = false;
+  });
+
   initTopNav();
   initThemeToggle();
   initOpacitySlider();
 
   document.getElementById('logo-link').addEventListener('click', () => {
     clearNavCache();
-    navigate('#home');
+    if (window.location.hash === '#home') {
+      navigate('#home', true);
+    } else {
+      window.location.hash = '#home';
+    }
   });
 
   HomeSection.init();
@@ -1505,24 +1530,15 @@ document.addEventListener('DOMContentLoaded', () => {
   DetailSection.init();
   StreamSection.init();
 
-  navigate(window.location.hash || '#home');
+  navigate(window.location.hash || '#home', true);
 });
 
-function initRouter() {
-  window.addEventListener('hashchange', () => {
-    clearNavCache();
-    navigate(window.location.hash);
-  });
-}
-
-let previousRoute = '#home';
-
-function navigate(hash) {
+function navigate(hash, refresh) {
   if (hash.startsWith('#detail/')) {
     const parts = hash.split('/');
     const type = parts[1];
     const id = parseInt(parts[2], 10);
-    if (!type || isNaN(id)) { navigate('#home'); return; }
+    if (!type || isNaN(id)) { navigate('#home', true); return; }
 
     const currentSection = document.querySelector('.content-section.active');
     if (currentSection && !currentSection.id.startsWith('section-detail') && !currentSection.id.startsWith('section-stream')) {
@@ -1546,7 +1562,7 @@ function navigate(hash) {
     const id = parseInt(parts[2], 10);
     const season = parts[3] ? parseInt(parts[3], 10) : null;
     const episode = parts[4] ? parseInt(parts[4], 10) : null;
-    if (!type || isNaN(id)) { navigate('#home'); return; }
+    if (!type || isNaN(id)) { navigate('#home', true); return; }
 
     StreamSection.prevHash = previousRoute;
 
@@ -1582,6 +1598,22 @@ function navigate(hash) {
   const topNavItem = document.querySelector(`.top-nav-item[data-section="${section}"]`);
   if (topNavItem) topNavItem.classList.add('active');
 
+  if (refresh) {
+    if (section === 'movies') {
+      MoviesSection.allItems = [];
+      MoviesSection.currentPage = 1;
+      MoviesSection.load();
+    } else if (section === 'series') {
+      SeriesSection.allItems = [];
+      SeriesSection.currentPage = 1;
+      SeriesSection.load();
+    } else if (section === 'home') {
+      HomeSection.refresh();
+    } else if (section === 'library') {
+      LibrarySection.refresh();
+    }
+  }
+
   const saved = contentWrap().dataset.scrollPos;
   if (saved) {
     requestAnimationFrame(() => {
@@ -1602,7 +1634,7 @@ function initTopNav() {
       const section = item.dataset.section;
       if (item.classList.contains('active')) return;
       delete contentWrap().dataset.scrollPos;
-      navigate(`#${section}`);
+      window.location.hash = `#${section}`;
     });
   });
 }

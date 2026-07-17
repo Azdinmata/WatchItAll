@@ -1,6 +1,10 @@
 const LibrarySection = {
   init() {
     this.bindEvents();
+    this.refresh();
+  },
+
+  refresh() {
     this.updateAuthUI();
     this.loadBookmarks();
     this.loadHistory();
