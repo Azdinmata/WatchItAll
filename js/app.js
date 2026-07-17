@@ -1,3 +1,21 @@
+let cachedSections = null;
+let cachedNavItems = null;
+const contentWrap = () => document.getElementById('content-sections');
+
+function getSections() {
+  if (!cachedSections) cachedSections = document.querySelectorAll('.content-section');
+  return cachedSections;
+}
+
+function getNavItems() {
+  if (!cachedNavItems) cachedNavItems = document.querySelectorAll('.bottom-nav-item, .top-nav-item');
+  return cachedNavItems;
+}
+
+function clearNavCache() {
+  cachedNavItems = null;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   AppState.init();
   initRouter();
@@ -6,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initOpacitySlider();
 
   document.getElementById('logo-link').addEventListener('click', () => {
-    window.location.hash = '#home';
-    location.reload();
+    clearNavCache();
+    navigate('#home');
   });
 
   HomeSection.init();
@@ -22,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initRouter() {
   window.addEventListener('hashchange', () => {
+    clearNavCache();
     navigate(window.location.hash);
   });
 }
@@ -38,12 +57,12 @@ function navigate(hash) {
     const currentSection = document.querySelector('.content-section.active');
     if (currentSection && !currentSection.id.startsWith('section-detail') && !currentSection.id.startsWith('section-stream')) {
       DetailSection.prevSection = '#' + currentSection.id.replace('section-', '');
-      document.querySelector('#content-sections').dataset.scrollPos = String(window.scrollY);
+      contentWrap().dataset.scrollPos = String(window.scrollY);
     }
 
-    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    getSections().forEach(s => s.classList.remove('active'));
     document.getElementById('section-detail').classList.add('active');
-    document.querySelectorAll('.bottom-nav-item, .top-nav-item').forEach(n => n.classList.remove('active'));
+    getNavItems().forEach(n => n.classList.remove('active'));
 
     DetailSection.load(type, id);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -61,9 +80,9 @@ function navigate(hash) {
 
     StreamSection.prevHash = previousRoute;
 
-    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    getSections().forEach(s => s.classList.remove('active'));
     document.getElementById('section-stream').classList.add('active');
-    document.querySelectorAll('.bottom-nav-item, .top-nav-item').forEach(n => n.classList.remove('active'));
+    getNavItems().forEach(n => n.classList.remove('active'));
 
     StreamSection.load(type, id, season, episode);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -84,21 +103,21 @@ function navigate(hash) {
   }
 
   const section = sectionMap[hash] || 'home';
-  document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+  getSections().forEach(s => s.classList.remove('active'));
   document.getElementById(`section-${section}`).classList.add('active');
 
-  document.querySelectorAll('.top-nav-item, .bottom-nav-item').forEach(n => n.classList.remove('active'));
+  getNavItems().forEach(n => n.classList.remove('active'));
   const navItem = document.querySelector(`.bottom-nav-item[data-section="${section}"]`);
   if (navItem) navItem.classList.add('active');
   const topNavItem = document.querySelector(`.top-nav-item[data-section="${section}"]`);
   if (topNavItem) topNavItem.classList.add('active');
 
-  const saved = document.querySelector('#content-sections').dataset.scrollPos;
+  const saved = contentWrap().dataset.scrollPos;
   if (saved) {
     requestAnimationFrame(() => {
       window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
     });
-    delete document.querySelector('#content-sections').dataset.scrollPos;
+    delete contentWrap().dataset.scrollPos;
   } else {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
@@ -107,12 +126,12 @@ function navigate(hash) {
 }
 
 function initTopNav() {
-  document.querySelectorAll('.bottom-nav-item, .top-nav-item').forEach(item => {
+  getNavItems().forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const section = item.dataset.section;
       if (item.classList.contains('active')) return;
-      delete document.querySelector('#content-sections').dataset.scrollPos;
+      delete contentWrap().dataset.scrollPos;
       navigate(`#${section}`);
     });
   });

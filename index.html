@@ -3,23 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0f14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>WatchItAll</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/glassmorphism.css">
-  <link rel="stylesheet" href="css/layout.css?v=2">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/library.css">
-  <link rel="stylesheet" href="css/detail.css">
-  <link rel="stylesheet" href="css/stream.css">
-  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <style>
+*, *::before, *::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font:inherit;color:inherit}
+input,select,textarea{font:inherit;color:inherit;border:none;outline:none;background:none}
+ul,ol{list-style:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
+.hidden{display:none!important}
+:root{--glass-opacity:0.8;--glass-blur:16px;--glass-blur-min:12px;--glass-border-opacity:0.15;--transition-speed:.3s;--sidebar-width:240px;--top-bar-height:56px;--border-radius-sm:8px;--border-radius-md:12px;--border-radius-lg:16px;--border-radius-xl:20px;--font-mono:'SF Mono','Fira Code','Consolas',monospace}
+[data-theme="dark"]{--glass-bg:rgba(15,15,20,var(--glass-opacity));--glass-border:rgba(255,255,255,var(--glass-border-opacity));--primary:#00d4ff;--primary-glow:rgba(0,212,255,.3);--secondary:#50e3a0;--secondary-glow:rgba(80,227,160,.3);--text-primary:#E2E8F0;--text-secondary:rgba(226,232,240,.7);--text-muted:rgba(226,232,240,.45);--card-bg:rgba(20,20,28,calc(var(--glass-opacity)+.1));--input-bg:rgba(255,255,255,.08);--hover-bg:rgba(255,255,255,.08);--active-bg:rgba(0,212,255,.15);--scrollbar-track:rgba(255,255,255,.05);--scrollbar-thumb:rgba(255,255,255,.15);--option-bg:#1a1a2e;--option-text:#E2E8F0;--danger:#ff4757;--success:#50e3a0;--badge-new:#00d4ff;--shadow:0 8px 32px rgba(0,0,0,.5)}
+[data-theme="light"]{--glass-bg:rgba(255,255,255,var(--glass-opacity));--glass-border:rgba(0,0,0,var(--glass-border-opacity));--primary:#0066ff;--primary-glow:rgba(0,102,255,.25);--secondary:#00b894;--secondary-glow:rgba(0,184,148,.25);--text-primary:#111;--text-secondary:rgba(17,17,17,.7);--text-muted:rgba(17,17,17,.4);--card-bg:rgba(255,255,255,calc(var(--glass-opacity)+.12));--input-bg:rgba(0,0,0,.06);--hover-bg:rgba(0,0,0,.06);--active-bg:rgba(0,102,255,.1);--scrollbar-track:rgba(0,0,0,.05);--scrollbar-thumb:rgba(0,0,0,.12);--option-bg:#fff;--option-text:#111;--danger:#e74c3c;--success:#00b894;--badge-new:#0066ff;--shadow:0 8px 32px rgba(0,0,0,.12)}
+.glass{background:var(--glass-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
+.glass-strong{background:var(--card-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
 <body>
   <div id="app">
     <div id="space-bg"></div>
-
-
 
     <main id="main-content">
       <header id="top-bar">
@@ -291,16 +304,16 @@
     </main>
   </div>
 
-  <script src="js/config.js"></script>
-  <script src="js/state.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/home.js"></script>
-  <script src="js/movies.js"></script>
-  <script src="js/series.js"></script>
-  <script src="js/library.js"></script>
-  <script src="js/detail.js"></script>
-  <script src="js/stream.js"></script>
-  <script src="js/app.js?v=2"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/state.js"></script>
+  <script defer src="js/api.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/home.js"></script>
+  <script defer src="js/movies.js"></script>
+  <script defer src="js/series.js"></script>
+  <script defer src="js/library.js"></script>
+  <script defer src="js/detail.js"></script>
+  <script defer src="js/stream.js"></script>
+  <script defer src="js/app.js?v=2"></script>
 </body>
 </html>
