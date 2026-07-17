@@ -6,7 +6,7 @@
 #space-bg {
   position: fixed;
   inset: 0;
-  background: url('../assets/space-bg.jpg') center center / cover no-repeat;
+  background: url('../assets/space-bg.webp') center center / cover no-repeat;
   z-index: -1;
   animation: space-drift 90s ease-in-out infinite alternate;
 }

@@ -33,6 +33,8 @@ const UI = {
     img.src = posterUrl;
     img.alt = title;
     img.loading = 'lazy';
+    img.width = 180;
+    img.height = 270;
     card.appendChild(img);
 
     if (showSeason && item.number_of_seasons) {
@@ -299,19 +301,32 @@ const UI = {
       if (!atEnd) show(right);
     };
 
+    const throttledUpdate = this.throttle(update, 100);
+
     const scheduleUpdate = () => {
       requestAnimationFrame(update);
       setTimeout(update, 80);
       setTimeout(update, 300);
     };
 
-    container.addEventListener('scroll', update);
-    window.addEventListener('resize', update);
-    const ro = new ResizeObserver(update);
+    container.addEventListener('scroll', throttledUpdate);
+    window.addEventListener('resize', throttledUpdate);
+    const ro = new ResizeObserver(throttledUpdate);
     ro.observe(wrapper);
-    const mo = new MutationObserver(update);
+    const mo = new MutationObserver(throttledUpdate);
     mo.observe(container, { childList: true, subtree: true });
     scheduleUpdate();
+  },
+
+  throttle(fn, limit = 100) {
+    let inThrottle = false;
+    return (...args) => {
+      if (!inThrottle) {
+        fn(...args);
+        inThrottle = true;
+        setTimeout(() => { inThrottle = false; }, limit);
+      }
+    };
   },
 
   debounce(fn, delay = 400) {

@@ -36,11 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('logo-link').addEventListener('click', () => {
     clearNavCache();
-    if (window.location.hash === '#home') {
-      navigate('#home', true);
-    } else {
-      window.location.hash = '#home';
-    }
+    window.__isBack = false;
+    navigate('#home', true);
   });
 
   HomeSection.init();
@@ -152,9 +149,13 @@ function initTopNav() {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const section = item.dataset.section;
-      if (item.classList.contains('active')) return;
       delete contentWrap().dataset.scrollPos;
-      window.location.hash = `#${section}`;
+      if (item.classList.contains('active')) {
+        window.__isBack = false;
+        navigate(`#${section}`, true);
+      } else {
+        window.location.hash = `#${section}`;
+      }
     });
   });
 }

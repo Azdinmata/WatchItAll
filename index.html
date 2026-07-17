@@ -8,6 +8,10 @@
   <title>WatchItAll</title>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://image.tmdb.org">
+  <link rel="dns-prefetch" href="https://image.tmdb.org">
+  <link rel="preconnect" href="https://api.themoviedb.org">
+  <link rel="dns-prefetch" href="https://api.themoviedb.org">
   <link rel="preload" href="assets/space-bg.webp" as="image">
   <style>
 *, *::before, *::after{margin:0;padding:0;box-sizing:border-box}
@@ -25,6 +29,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 [data-theme="light"]{--glass-bg:rgba(255,255,255,var(--glass-opacity));--glass-border:rgba(0,0,0,var(--glass-border-opacity));--primary:#0066ff;--primary-glow:rgba(0,102,255,.25);--secondary:#00b894;--secondary-glow:rgba(0,184,148,.25);--text-primary:#111;--text-secondary:rgba(17,17,17,.7);--text-muted:rgba(17,17,17,.4);--card-bg:rgba(255,255,255,calc(var(--glass-opacity)+.12));--input-bg:rgba(0,0,0,.06);--hover-bg:rgba(0,0,0,.06);--active-bg:rgba(0,102,255,.1);--scrollbar-track:rgba(0,0,0,.05);--scrollbar-thumb:rgba(0,0,0,.12);--option-bg:#fff;--option-text:#111;--danger:#e74c3c;--success:#00b894;--badge-new:#0066ff;--shadow:0 8px 32px rgba(0,0,0,.12)}
 .glass{background:var(--glass-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
 .glass-strong{background:var(--card-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
+@media(max-width:768px){.glass,.glass-strong{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}}
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>

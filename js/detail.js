@@ -65,6 +65,8 @@ const DetailSection = {
     const poster = document.getElementById('detail-poster');
     poster.src = posterUrl || '';
     poster.alt = title;
+    poster.width = 220;
+    poster.height = 330;
 
     /* Backdrop */
     const backdropEl = document.getElementById('detail-backdrop');
@@ -146,6 +148,8 @@ const DetailSection = {
         img.src = photoUrl;
         img.alt = person.name;
         img.loading = 'lazy';
+        img.width = 80;
+        img.height = 80;
         card.appendChild(img);
       } else {
         const placeholder = document.createElement('div');
@@ -289,6 +293,8 @@ const DetailSection = {
       posterEl.src = TMDB.getPosterUrl(season.poster_path, 'small') || '';
       posterEl.alt = season.name || `Season ${season.season_number}`;
       posterEl.loading = 'lazy';
+      posterEl.width = 60;
+      posterEl.height = 90;
 
       const info = document.createElement('div');
       info.className = 'season-card-info';
@@ -348,6 +354,8 @@ const DetailSection = {
           img.src = TMDB.getPosterUrl(ep.still_path, 'small');
           img.alt = ep.name || `Episode ${ep.episode_number}`;
           img.loading = 'lazy';
+          img.width = 140;
+          img.height = 79;
           card.appendChild(img);
         }
 
@@ -405,7 +413,8 @@ const DetailSection = {
         arrowRight.style.display = epRow.scrollLeft >= overflow - 5 ? 'none' : 'flex';
       };
 
-      epRow.addEventListener('scroll', updateArrows);
+      const throttledUpdate = UI.throttle(updateArrows, 100);
+      epRow.addEventListener('scroll', throttledUpdate);
       updateArrows();
 
       body.appendChild(arrowLeft);
