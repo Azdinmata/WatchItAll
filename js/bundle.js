@@ -388,8 +388,25 @@ const HomeSection = {
     if (!container) return;
 
     try {
-      const data = await TMDB.getLatest(type, endpoint);
-      const items = (data.results || []).slice(0, 20);
+      let items = [];
+      if (endpoint === 'top_rated') {
+        const data = await TMDB.fetch(`discover/${type}`, {
+          sort_by: 'vote_average.desc',
+          'vote_count.gte': 200,
+          page: 1,
+        });
+        items = (data.results || []).slice(0, 20);
+      } else if (endpoint === 'now_playing' || endpoint === 'on_the_air') {
+        const sortField = type === 'movie' ? 'primary_release_date.desc' : 'first_air_date.desc';
+        const data = await TMDB.fetch(`discover/${type}`, {
+          sort_by: sortField,
+          page: 1,
+        });
+        items = (data.results || []).slice(0, 20);
+      } else {
+        const data = await TMDB.getLatest(type, endpoint);
+        items = (data.results || []).slice(0, 20);
+      }
       UI.renderCarousel(container, items, { mediaType: type });
     } catch (e) {
       console.error(`Failed to load ${label}:`, e);
