@@ -2177,8 +2177,44 @@ body {
 
 @media (max-width: 768px) {
   #top-bar {
-    height: 64px;
-    padding: 0 16px;
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .top-bar-left {
+    gap: 10px;
+  }
+
+  .top-bar-right {
+    gap: 8px;
+  }
+
+  .logo-mark {
+    gap: 8px;
+  }
+
+  .logo-svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .logo-text-stack {
+    gap: 1px;
+  }
+
+  .logo-watch {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  .logo-it {
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+  }
+
+  .logo-all {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
   }
 
   .top-nav {
@@ -2191,74 +2227,127 @@ body {
 
   #bottom-nav {
     display: flex;
+    height: 56px;
+  }
+
+  .bottom-nav-item {
+    font-size: 0.65rem;
+    gap: 2px;
+  }
+
+  .bottom-nav-item i {
+    font-size: 1rem;
   }
 
   #main-content {
-    padding-bottom: 84px;
+    padding-bottom: 64px;
   }
 
   #content-sections {
-    padding: 18px 12px;
+    padding: 12px 10px;
   }
 
   .section-header-banner {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   .page-title {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
+    gap: 10px;
+  }
+
+  .page-title i {
+    font-size: 1.2rem;
   }
 
   .page-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.78rem;
   }
 
   /* Hero Featured Mobile */
   .hero-featured-container {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .hero-featured-banner {
-    height: 380px;
-    padding: 20px;
-    border-radius: var(--border-radius-lg);
+    height: 280px;
+    padding: 16px;
+    border-radius: 12px;
   }
 
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 
   .hero-overview {
-    font-size: 0.88rem;
-    line-height: 1.5;
+    font-size: 0.78rem;
+    line-height: 1.4;
     -webkit-line-clamp: 2;
+  }
+
+  .hero-actions-row {
+    gap: 8px;
+  }
+
+  .btn-hero-primary, .btn-hero-secondary {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  .btn-hero-primary svg, .btn-hero-secondary svg {
+    width: 16px;
+    height: 16px;
   }
 
   .hero-thumbs-bar {
     right: 50%;
     transform: translateX(50%);
-    bottom: 16px;
-    padding: 4px 10px;
+    bottom: 10px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
+
+  .hero-thumbs-bar svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .hero-rating-text {
+    font-size: 0.75rem;
   }
 
   /* Poster Cards Mobile Carousel */
   .poster-card {
-    flex: 0 0 140px;
-    border-radius: var(--border-radius-md);
+    flex: 0 0 120px;
+    border-radius: 8px;
+  }
+
+  .poster-rating {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .poster-card-title {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .poster-year {
+    font-size: 0.65rem;
   }
 
   .scroll-arrow-left {
-    left: -8px;
+    left: -4px;
   }
 
   .scroll-arrow-right {
-    right: -8px;
+    right: -4px;
   }
 
   .scroll-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
   }
 
   /* Detail View Mobile */
@@ -2266,15 +2355,15 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px 16px;
-    gap: 20px;
-    border-radius: var(--border-radius-lg);
+    padding: 16px 12px;
+    gap: 16px;
+    border-radius: 12px;
   }
 
   .detail-poster-col {
-    width: 150px;
+    width: 130px;
     margin: 0 auto;
-    gap: 12px;
+    gap: 8px;
   }
 
   .detail-hero-info {
@@ -2283,7 +2372,7 @@ body {
   }
 
   .detail-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     text-align: center;
     width: 100%;
   }
@@ -2294,17 +2383,18 @@ body {
   }
 
   .detail-tagline {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: center;
   }
 
   .detail-meta-pills, .detail-tags, .detail-ratings-extra, .detail-details-strip {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .meta-pill {
-    padding: 4px 10px;
-    font-size: 0.8rem;
+    padding: 3px 8px;
+    font-size: 0.7rem;
   }
 
   .detail-synopsis-wrap {
@@ -2313,19 +2403,27 @@ body {
   }
 
   .detail-overview {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding: 12px 14px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding: 10px 12px;
     text-align: left;
   }
 
   .detail-cast-card {
-    width: 95px;
+    width: 80px;
   }
 
   .detail-cast-photo, .detail-cast-photo-placeholder {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .detail-cast-name {
+    font-size: 0.65rem;
+  }
+
+  .detail-cast-role {
+    font-size: 0.6rem;
   }
 
   .season-card-inner {
@@ -2336,44 +2434,79 @@ body {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid var(--glass-border);
-    padding: 12px 14px;
+    padding: 10px 12px;
+  }
+
+  .season-number {
+    font-size: 0.9rem;
+  }
+
+  .season-year {
+    font-size: 0.7rem;
+  }
+
+  .season-eps-count {
+    font-size: 0.7rem;
   }
 
   .season-card-poster {
-    width: 48px;
-    height: 72px;
+    width: 42px;
+    height: 63px;
   }
 
   .season-card .episode-card {
-    width: 130px;
+    width: 110px;
+  }
+
+  .episode-title {
+    font-size: 0.7rem;
+  }
+
+  .episode-number {
+    font-size: 0.6rem;
   }
 
   /* Stream Section Mobile */
   .stream-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .stream-episode-nav {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    padding: 12px 14px;
+    gap: 8px;
+    padding: 10px 12px;
   }
 
   .stream-select {
     width: 100%;
   }
 
+  .stream-select-trigger {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
   .stream-servers {
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .stream-server-btn {
-    padding: 8px 14px;
-    font-size: 0.82rem;
-    flex: 1 1 calc(50% - 6px);
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    flex: 1 1 calc(50% - 4px);
     justify-content: center;
+    gap: 4px;
+  }
+
+  .stream-server-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .stream-servers-label {
+    font-size: 0.7rem;
   }
 }
 
@@ -2381,19 +2514,24 @@ body {
   /* 2-Column Responsive Grid on Phones */
   .results-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
 
   .results-grid .poster-card {
     flex: none;
     width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .results-grid .poster-img {
+    height: 200px;
   }
 
   /* 2-Column Filter Ribbon on Phones */
   .filter-ribbon {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
   }
 
@@ -2403,68 +2541,183 @@ body {
   }
 
   .custom-select-trigger {
-    padding: 8px 10px;
-    font-size: 0.82rem;
+    padding: 6px 8px;
+    font-size: 0.75rem;
   }
 
   .browse-controls {
-    padding: 14px 12px;
-    margin-bottom: 24px;
+    padding: 12px 10px;
+    margin-bottom: 20px;
+  }
+
+  .search-icon {
+    font-size: 0.9rem;
+    left: 12px;
   }
 
   .search-input {
-    padding: 12px 16px 12px 42px;
-    font-size: 0.9rem;
+    padding: 10px 12px 10px 38px;
+    font-size: 0.82rem;
   }
 
   .library-tabs {
     width: 100%;
     justify-content: space-around;
-    padding: 4px;
-    gap: 4px;
+    padding: 3px;
+    gap: 3px;
   }
 
   .lib-tab {
-    padding: 8px 10px;
-    font-size: 0.8rem;
+    padding: 6px 8px;
+    font-size: 0.72rem;
     flex: 1;
     justify-content: center;
+  }
+
+  .lib-tab svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tab-counter {
+    font-size: 0.6rem;
+    padding: 1px 5px;
   }
 }
 
 @media (max-width: 480px) {
+  #top-bar {
+    height: 50px;
+    padding: 0 8px;
+  }
+
+  .logo-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo-watch {
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+
+  .logo-all {
+    font-size: 0.55rem;
+  }
+
+  #bottom-nav {
+    height: 50px;
+    padding: 0 6px;
+  }
+
+  .bottom-nav-item {
+    font-size: 0.6rem;
+  }
+
+  .bottom-nav-item i {
+    font-size: 0.9rem;
+  }
+
+  #main-content {
+    padding-bottom: 58px;
+  }
+
   .hero-featured-banner {
-    height: 330px;
-    padding: 16px;
+    height: 240px;
+    padding: 12px;
+    border-radius: 10px;
   }
 
   .hero-title {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
+  }
+
+  .hero-overview {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 1;
   }
 
   .hero-actions-row {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
   }
 
   .btn-hero-primary, .btn-hero-secondary {
     flex: 1;
     justify-content: center;
-    padding: 10px 14px;
-    font-size: 0.85rem;
+    padding: 7px 10px;
+    font-size: 0.72rem;
+  }
+
+  .btn-hero-primary svg, .btn-hero-secondary svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .hero-thumbs-bar {
+    bottom: 8px;
+    padding: 2px 6px;
+    font-size: 0.6rem;
+  }
+
+  .hero-thumbs-bar svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .poster-card {
+    flex: 0 0 105px;
+  }
+
+  .results-grid {
+    gap: 8px;
+  }
+
+  .results-grid .poster-img {
+    height: 170px;
   }
 
   .page-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .section-subtitle {
+    font-size: 0.72rem;
   }
 
   .detail-poster-col {
-    width: 140px;
+    width: 110px;
   }
 
   .detail-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .detail-tagline {
+    font-size: 0.72rem;
+  }
+
+  .detail-cast-card {
+    width: 70px;
+  }
+
+  .detail-cast-photo, .detail-cast-photo-placeholder {
+    width: 50px;
+    height: 50px;
+  }
+
+  .detail-cast-name {
+    font-size: 0.6rem;
+  }
+
+  .season-card .episode-card {
+    width: 100px;
+  }
+
+  .episode-title {
+    font-size: 0.65rem;
   }
 }
 
