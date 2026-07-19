@@ -1700,6 +1700,13 @@
   box-shadow: 0 0 16px var(--primary-glow);
 }
 
+.stream-server-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 16px var(--primary-glow);
+}
+
 .stream-external-btn {
   text-decoration: none;
   color: var(--text-muted);

@@ -1410,7 +1410,7 @@ const StreamSection = {
       this.detailData = detail;
       this.render(detail);
       this.renderServers();
-      this.loadServer(1);
+      this.loadServer(0);
 
       if (type === 'tv') {
         document.getElementById('stream-episode-nav').classList.remove('hidden');
@@ -1439,6 +1439,7 @@ const StreamSection = {
       btn.className = 'stream-server-btn';
       btn.innerHTML = `<i class="fas fa-play"></i> ${sv.name}`;
       btn.addEventListener('click', () => this.loadServer(i));
+      btn.dataset.index = i;
       container.appendChild(btn);
     });
   },
@@ -1456,6 +1457,9 @@ const StreamSection = {
     const iframe = document.getElementById('stream-iframe');
     wrap.classList.remove('hidden');
     iframe.src = url;
+
+    const buttons = document.querySelectorAll('.stream-server-btn');
+    buttons.forEach(btn => btn.classList.toggle('active', parseInt(btn.dataset.index) === index));
   },
 
   async loadSeasonEpisodes(seasonNum) {
