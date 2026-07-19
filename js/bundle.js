@@ -1363,6 +1363,22 @@ const STREAM_SERVERS = [
         : `https://embed.su/embed/tv/${id}/${s}/${e}`,
   },
   {
+    name: 'VidSrc.sbs',
+    embed: true,
+    url: (id, type, s, e) =>
+      type === 'movie'
+        ? `https://vidsrc.sbs/embed/movie/${id}`
+        : `https://vidsrc.sbs/embed/tv/${id}/${s}/${e}`,
+  },
+  {
+    name: 'VidCore',
+    embed: true,
+    url: (id, type, s, e) =>
+      type === 'movie'
+        ? `https://vidcore.org/embed/movie/${id}`
+        : `https://vidcore.org/embed/tv/${id}/${s}/${e}`,
+  },
+  {
     name: 'MultiEmbed',
     embed: true,
     url: (id, type, s, e, imdbId) => {
