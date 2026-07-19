@@ -387,25 +387,39 @@ const HomeSection = {
     const container = document.querySelector(selector);
     if (!container) return;
 
+    const today = new Date().toISOString().slice(0, 10);
+
     try {
       let items = [];
       if (endpoint === 'top_rated') {
         const data = await TMDB.fetch(`discover/${type}`, {
           sort_by: 'vote_average.desc',
           'vote_count.gte': 200,
+          [type === 'movie' ? 'primary_release_date.lte' : 'first_air_date.lte']: today,
           page: 1,
         });
-        items = (data.results || []).slice(0, 20);
+        items = (data.results || []).filter(item => {
+          const d = item.release_date || item.first_air_date;
+          return d && d <= today;
+        }).slice(0, 20);
       } else if (endpoint === 'now_playing' || endpoint === 'on_the_air') {
         const sortField = type === 'movie' ? 'primary_release_date.desc' : 'first_air_date.desc';
+        const dateField = type === 'movie' ? 'primary_release_date.lte' : 'first_air_date.lte';
         const data = await TMDB.fetch(`discover/${type}`, {
           sort_by: sortField,
+          [dateField]: today,
           page: 1,
         });
-        items = (data.results || []).slice(0, 20);
+        items = (data.results || []).filter(item => {
+          const d = item.release_date || item.first_air_date;
+          return d && d <= today;
+        }).slice(0, 20);
       } else {
         const data = await TMDB.getLatest(type, endpoint);
-        items = (data.results || []).slice(0, 20);
+        items = (data.results || []).filter(item => {
+          const d = item.release_date || item.first_air_date;
+          return !d || d <= today;
+        }).slice(0, 20);
       }
       UI.renderCarousel(container, items, { mediaType: type });
     } catch (e) {
