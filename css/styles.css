@@ -2154,7 +2154,7 @@ body {
   color: var(--primary);
 }
 
-/* --- Responsive Media Queries --- */
+/* --- Responsive Media Queries (Mobile & Phone Layout Optimization) --- */
 @media (max-width: 1024px) {
   #content-sections {
     padding: 24px 20px;
@@ -2170,13 +2170,14 @@ body {
   }
 
   .detail-hero {
-    gap: 24px;
+    gap: 28px;
     padding: 24px;
   }
 }
 
 @media (max-width: 768px) {
   #top-bar {
+    height: 64px;
     padding: 0 16px;
   }
 
@@ -2184,13 +2185,43 @@ body {
     display: none;
   }
 
+  .opacity-control {
+    display: none;
+  }
+
   #bottom-nav {
     display: flex;
   }
 
+  #main-content {
+    padding-bottom: 84px;
+  }
+
+  #content-sections {
+    padding: 18px 12px;
+  }
+
+  .section-header-banner {
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Hero Featured Mobile */
+  .hero-featured-container {
+    margin-bottom: 28px;
+  }
+
   .hero-featured-banner {
     height: 380px;
-    padding: 24px;
+    padding: 20px;
+    border-radius: var(--border-radius-lg);
   }
 
   .hero-title {
@@ -2198,28 +2229,63 @@ body {
   }
 
   .hero-overview {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
     -webkit-line-clamp: 2;
   }
 
+  .hero-thumbs-bar {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 16px;
+    padding: 4px 10px;
+  }
+
+  /* Poster Cards Mobile Carousel */
+  .poster-card {
+    flex: 0 0 140px;
+    border-radius: var(--border-radius-md);
+  }
+
+  .scroll-arrow-left {
+    left: -8px;
+  }
+
+  .scroll-arrow-right {
+    right: -8px;
+  }
+
+  .scroll-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  /* Detail View Mobile */
   .detail-hero {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 20px 16px;
+    gap: 20px;
+    border-radius: var(--border-radius-lg);
   }
 
   .detail-poster-col {
-    width: 180px;
+    width: 150px;
+    margin: 0 auto;
+    gap: 12px;
   }
 
   .detail-hero-info {
     align-items: center;
+    width: 100%;
   }
 
   .detail-title {
     font-size: 1.6rem;
     text-align: center;
+    width: 100%;
   }
 
   .detail-title::after {
@@ -2227,8 +2293,39 @@ body {
     transform: translateX(-50%);
   }
 
-  .detail-tags, .detail-ratings-extra, .detail-meta-pills, .detail-details-strip {
+  .detail-tagline {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .detail-meta-pills, .detail-tags, .detail-ratings-extra, .detail-details-strip {
     justify-content: center;
+  }
+
+  .meta-pill {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+
+  .detail-synopsis-wrap {
+    width: 100%;
+    text-align: left;
+  }
+
+  .detail-overview {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  .detail-cast-card {
+    width: 95px;
+  }
+
+  .detail-cast-photo, .detail-cast-photo-placeholder {
+    width: 70px;
+    height: 70px;
   }
 
   .season-card-inner {
@@ -2239,42 +2336,135 @@ body {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid var(--glass-border);
+    padding: 12px 14px;
+  }
+
+  .season-card-poster {
+    width: 48px;
+    height: 72px;
+  }
+
+  .season-card .episode-card {
+    width: 130px;
+  }
+
+  /* Stream Section Mobile */
+  .stream-title {
+    font-size: 1.3rem;
+  }
+
+  .stream-episode-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .stream-select {
+    width: 100%;
+  }
+
+  .stream-servers {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .stream-server-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  /* 2-Column Responsive Grid on Phones */
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .results-grid .poster-card {
+    flex: none;
+    width: 100%;
+  }
+
+  /* 2-Column Filter Ribbon on Phones */
+  .filter-ribbon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .custom-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .custom-select-trigger {
+    padding: 8px 10px;
+    font-size: 0.82rem;
   }
 
   .browse-controls {
-    padding: 16px;
+    padding: 14px 12px;
+    margin-bottom: 24px;
   }
 
-  .results-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 16px;
+  .search-input {
+    padding: 12px 16px 12px 42px;
+    font-size: 0.9rem;
   }
 
-  .poster-card {
-    flex: 0 0 145px;
+  .library-tabs {
+    width: 100%;
+    justify-content: space-around;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .lib-tab {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    flex: 1;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .hero-featured-banner {
-    height: 340px;
+    height: 330px;
     padding: 16px;
   }
 
   .hero-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .hero-actions-row {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    gap: 8px;
+    width: 100%;
   }
 
-  .hero-thumbs-bar {
-    display: none;
+  .btn-hero-primary, .btn-hero-secondary {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: 0.85rem;
   }
 
   .page-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+  }
+
+  .detail-poster-col {
+    width: 140px;
+  }
+
+  .detail-title {
+    font-size: 1.4rem;
   }
 }
+
