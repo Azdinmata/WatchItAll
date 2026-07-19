@@ -54,34 +54,56 @@
 .top-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
   cursor: pointer;
   user-select: none;
 }
 
+.logo-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo-svg {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 }
 
-.top-logo h1 {
+.logo-text-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0;
+}
+
+.logo-watch {
   font-family: 'Cinzel', serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  white-space: nowrap;
-  line-height: 1;
 }
 
-.top-logo h1 span {
+.logo-it {
   font-family: 'Playfair Display', serif;
   font-style: italic;
+  font-size: 0.65rem;
   font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--text-muted);
+  -webkit-text-fill-color: var(--text-muted);
+  margin: -1px 0;
+}
+
+.logo-all {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 8px;
   background: linear-gradient(135deg, var(--secondary), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1978,14 +2000,24 @@
     display: none;
   }
 
-  .top-logo h1 {
-    font-size: 1.05rem;
-    letter-spacing: 1px;
+  .logo-svg {
+    width: 32px;
+    height: 32px;
   }
 
-  .logo-svg {
-    width: 26px;
-    height: 26px;
+  .logo-watch {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+  }
+
+  .logo-it {
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+  }
+
+  .logo-all {
+    font-size: 1.15rem;
+    letter-spacing: 6px;
   }
 
   #bottom-nav {
@@ -2124,14 +2156,24 @@
     gap: 4px;
   }
 
-  .top-logo h1 {
-    font-size: 0.95rem;
-    letter-spacing: 1px;
+  .logo-svg {
+    width: 26px;
+    height: 26px;
   }
 
-  .logo-svg {
-    width: 22px;
-    height: 22px;
+  .logo-watch {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .logo-it {
+    font-size: 0.4rem;
+    letter-spacing: 3px;
+  }
+
+  .logo-all {
+    font-size: 0.95rem;
+    letter-spacing: 5px;
   }
 
   #bottom-nav {
