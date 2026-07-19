@@ -18,11 +18,12 @@ const UI = {
     if (showBookmark) {
       const btn = document.createElement('button');
       btn.className = `bookmark-btn${isBookmarked ? ' active' : ''}`;
-      btn.innerHTML = isBookmarked ? '&#9733;' : '&#9734;';
+      btn.innerHTML = isBookmarked ? '<i class="fas fa-bookmark"></i>' : '<i class="far fa-bookmark"></i>';
+      btn.title = isBookmarked ? 'Remove from Watchlist' : 'Add to Watchlist';
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const added = AppState.toggleBookmark({ ...item, media_type: type });
-        btn.innerHTML = added ? '&#9733;' : '&#9734;';
+        btn.innerHTML = added ? '<i class="fas fa-bookmark"></i>' : '<i class="far fa-bookmark"></i>';
         btn.classList.toggle('active', added);
       });
       card.appendChild(btn);
@@ -34,7 +35,15 @@ const UI = {
     img.alt = title;
     img.loading = 'lazy';
     img.decoding = 'async';
+    img.onerror = () => {
+      img.src = 'assets/space-bg.webp';
+    };
     card.appendChild(img);
+
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'poster-play-overlay';
+    playOverlay.innerHTML = '<div class="play-icon-circle"><i class="fas fa-play"></i></div>';
+    card.appendChild(playOverlay);
 
     if (showSeason && item.number_of_seasons) {
       const overlay = document.createElement('div');
@@ -50,6 +59,19 @@ const UI = {
       card.appendChild(bar);
     }
 
+    if (rating) {
+      const badge = document.createElement('span');
+      const r = parseFloat(rating);
+      let colorClass = 'rating-great';
+      if (r >= 8) colorClass = 'rating-great';
+      else if (r >= 7) colorClass = 'rating-good';
+      else if (r >= 5) colorClass = 'rating-mid';
+      else colorClass = 'rating-poor';
+      badge.className = `rating-badge-overlay ${colorClass}`;
+      badge.innerHTML = `<i class="fas fa-star"></i> ${rating}`;
+      card.appendChild(badge);
+    }
+
     const info = document.createElement('div');
     info.className = 'poster-info';
 
@@ -61,15 +83,16 @@ const UI = {
     const meta = document.createElement('div');
     meta.className = 'poster-meta';
 
-    if (rating) {
-      const badge = document.createElement('span');
-      badge.className = 'rating-badge';
-      badge.textContent = `\u2605 ${rating}`;
-      meta.appendChild(badge);
+    if (type) {
+      const typeBadge = document.createElement('span');
+      typeBadge.className = 'poster-type-badge';
+      typeBadge.textContent = type === 'movie' ? 'Movie' : 'TV';
+      meta.appendChild(typeBadge);
     }
 
     if (year) {
       const yr = document.createElement('span');
+      yr.className = 'poster-year';
       yr.textContent = year;
       meta.appendChild(yr);
     }
@@ -85,6 +108,123 @@ const UI = {
     return card;
   },
 
+  renderHeroBanner(container, items) {
+    if (!container || !items || items.length === 0) return;
+    container.innerHTML = '';
+
+    let activeIdx = 0;
+    const hero = document.createElement('div');
+    hero.className = 'hero-featured-banner glass';
+
+    const backdropWrap = document.createElement('div');
+    backdropWrap.className = 'hero-backdrop-wrap';
+    const backdropImg = document.createElement('img');
+    backdropImg.className = 'hero-backdrop-img';
+    backdropWrap.appendChild(backdropImg);
+
+    const overlayGradient = document.createElement('div');
+    overlayGradient.className = 'hero-backdrop-overlay';
+    backdropWrap.appendChild(overlayGradient);
+
+    const content = document.createElement('div');
+    content.className = 'hero-content-col';
+
+    const badge = document.createElement('div');
+    badge.className = 'hero-badge-pill';
+    badge.innerHTML = '<i class="fas fa-fire"></i> FEATURED SPOTLIGHT';
+    content.appendChild(badge);
+
+    const titleEl = document.createElement('h1');
+    titleEl.className = 'hero-title';
+    content.appendChild(titleEl);
+
+    const metaRow = document.createElement('div');
+    metaRow.className = 'hero-meta-row';
+    content.appendChild(metaRow);
+
+    const descEl = document.createElement('p');
+    descEl.className = 'hero-overview';
+    content.appendChild(descEl);
+
+    const actionsRow = document.createElement('div');
+    actionsRow.className = 'hero-actions-row';
+
+    const watchBtn = document.createElement('a');
+    watchBtn.className = 'btn-hero-primary';
+    watchBtn.innerHTML = '<i class="fas fa-play"></i> Watch Now';
+
+    const detailBtn = document.createElement('a');
+    detailBtn.className = 'btn-hero-secondary';
+    detailBtn.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+
+    actionsRow.appendChild(watchBtn);
+    actionsRow.appendChild(detailBtn);
+    content.appendChild(actionsRow);
+
+    const thumbsBar = document.createElement('div');
+    thumbsBar.className = 'hero-thumbs-bar';
+    items.forEach((item, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `hero-thumb-dot${idx === 0 ? ' active' : ''}`;
+      dot.title = item.title || item.name || 'Featured Title';
+      dot.addEventListener('click', () => {
+        activeIdx = idx;
+        updateHero(activeIdx);
+      });
+      thumbsBar.appendChild(dot);
+    });
+
+    hero.appendChild(backdropWrap);
+    hero.appendChild(content);
+    hero.appendChild(thumbsBar);
+    container.appendChild(hero);
+
+    function updateHero(idx) {
+      const item = items[idx];
+      if (!item) return;
+      const type = item.media_type || (item.first_air_date ? 'tv' : 'movie');
+      const title = item.title || item.name || 'Untitled';
+      const backdropUrl = item.backdrop_path
+        ? `${CONFIG.IMG_BASE}/w1280${item.backdrop_path}`
+        : TMDB.getPosterUrl(item.poster_path, 'large');
+      const year = (item.release_date || item.first_air_date || '').slice(0, 4);
+      const rating = item.vote_average ? item.vote_average.toFixed(1) : '8.5';
+
+      backdropImg.src = backdropUrl;
+      titleEl.textContent = title;
+      descEl.textContent = item.overview || 'Experience this high quality movie streaming release.';
+
+      metaRow.innerHTML = `
+        <span class="hero-rating-badge"><i class="fas fa-star"></i> ${rating}</span>
+        <span class="hero-meta-item"><i class="fas fa-calendar"></i> ${year}</span>
+        <span class="hero-meta-item"><i class="fas fa-film"></i> ${type === 'movie' ? 'Movie' : 'TV Series'}</span>
+        <span class="hero-quality-chip">4K ULTRA HD</span>
+      `;
+
+      watchBtn.href = `#stream/${type}/${item.id}`;
+      detailBtn.href = `#detail/${type}/${item.id}`;
+
+      const dots = thumbsBar.querySelectorAll('.hero-thumb-dot');
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    updateHero(0);
+
+    let timer = setInterval(() => {
+      activeIdx = (activeIdx + 1) % items.length;
+      updateHero(activeIdx);
+    }, 8000);
+
+    hero.addEventListener('mouseenter', () => clearInterval(timer));
+    hero.addEventListener('mouseleave', () => {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        activeIdx = (activeIdx + 1) % items.length;
+        updateHero(activeIdx);
+      }, 8000);
+    });
+  },
+
   renderCarousel(container, items, options = {}) {
     container.innerHTML = '';
     items.forEach(item => {
@@ -97,7 +237,12 @@ const UI = {
   renderGrid(container, items, options = {}) {
     container.innerHTML = '';
     if (!items || items.length === 0) {
-      container.innerHTML = '<p class="empty-state">No results found.</p>';
+      container.innerHTML = `
+        <div class="empty-grid-notice">
+          <i class="fas fa-search"></i>
+          <p>No titles match your filter criteria.</p>
+        </div>
+      `;
       return;
     }
     items.forEach(item => {

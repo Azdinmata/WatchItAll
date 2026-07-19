@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0f0f14">
+  <meta name="theme-color" content="#080911">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Watch It All</title>
+  <title>WatchItAll — Ultimate Movies & TV Streaming</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://image.tmdb.org">
@@ -18,29 +18,32 @@
   <link rel="preload" href="assets/space-bg.webp" as="image">
   <style>
 *, *::before, *::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:16px;width:100%;overflow-x:hidden}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;width:100%}
+html{font-size:16px;width:100%;overflow-x:hidden;scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans','Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;width:100%;background-color:#080911;color:#e2e8f0}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font:inherit;color:inherit}
 input,select,textarea{font:inherit;color:inherit;border:none;outline:none;background:none}
 ul,ol{list-style:none}
 img{display:block;max-width:100%}
-h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
+h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif;font-weight:700;line-height:1.2}
 .hidden{display:none!important}
-:root{--glass-opacity:0.8;--glass-blur:16px;--glass-blur-min:12px;--glass-border-opacity:0.15;--transition-speed:.3s;--sidebar-width:240px;--top-bar-height:64px;--border-radius-sm:8px;--border-radius-md:12px;--border-radius-lg:16px;--border-radius-xl:20px;--font-mono:'SF Mono','Fira Code','Consolas',monospace}
-[data-theme="dark"]{--glass-bg:rgba(15,15,20,var(--glass-opacity));--glass-border:rgba(255,255,255,var(--glass-border-opacity));--primary:#00d4ff;--primary-glow:rgba(0,212,255,.3);--secondary:#50e3a0;--secondary-glow:rgba(80,227,160,.3);--text-primary:#E2E8F0;--text-secondary:rgba(226,232,240,.7);--text-muted:rgba(226,232,240,.45);--card-bg:rgba(20,20,28,calc(var(--glass-opacity)+.1));--input-bg:rgba(255,255,255,.08);--hover-bg:rgba(255,255,255,.08);--active-bg:rgba(0,212,255,.15);--scrollbar-track:rgba(255,255,255,.05);--scrollbar-thumb:rgba(255,255,255,.15);--option-bg:#1a1a2e;--option-text:#E2E8F0;--danger:#ff4757;--success:#50e3a0;--badge-new:#00d4ff;--shadow:0 8px 32px rgba(0,0,0,.5)}
-[data-theme="light"]{--glass-bg:rgba(255,255,255,var(--glass-opacity));--glass-border:rgba(0,0,0,var(--glass-border-opacity));--primary:#0066ff;--primary-glow:rgba(0,102,255,.25);--secondary:#00b894;--secondary-glow:rgba(0,184,148,.25);--text-primary:#111;--text-secondary:rgba(17,17,17,.7);--text-muted:rgba(17,17,17,.4);--card-bg:rgba(255,255,255,calc(var(--glass-opacity)+.12));--input-bg:rgba(0,0,0,.06);--hover-bg:rgba(0,0,0,.06);--active-bg:rgba(0,102,255,.1);--scrollbar-track:rgba(0,0,0,.05);--scrollbar-thumb:rgba(0,0,0,.12);--option-bg:#fff;--option-text:#111;--danger:#e74c3c;--success:#00b894;--badge-new:#0066ff;--shadow:0 8px 32px rgba(0,0,0,.12)}
+:root{--glass-opacity:0.8;--glass-blur:16px;--glass-blur-min:12px;--glass-border-opacity:0.15;--transition-speed:.3s;--sidebar-width:240px;--top-bar-height:72px;--border-radius-sm:8px;--border-radius-md:12px;--border-radius-lg:16px;--border-radius-xl:24px;--font-mono:'SF Mono','Fira Code','Consolas',monospace}
+[data-theme="dark"]{--glass-bg:rgba(12,13,22,var(--glass-opacity));--glass-border:rgba(255,255,255,var(--glass-border-opacity));--primary:#00d4ff;--primary-glow:rgba(0,212,255,.35);--secondary:#9d4edd;--secondary-glow:rgba(157,78,221,.35);--accent:#f72585;--accent-glow:rgba(247,37,133,.35);--text-primary:#f8fafc;--text-secondary:rgba(248,250,252,.75);--text-muted:rgba(248,250,252,.45);--card-bg:rgba(18,20,32,calc(var(--glass-opacity)+.1));--input-bg:rgba(255,255,255,.06);--hover-bg:rgba(255,255,255,.08);--active-bg:rgba(0,212,255,.18);--scrollbar-track:rgba(255,255,255,.03);--scrollbar-thumb:rgba(255,255,255,.18);--option-bg:#0f111a;--option-text:#f8fafc;--danger:#ff4757;--success:#10b981;--badge-new:#00d4ff;--shadow:0 16px 40px rgba(0,0,0,.6)}
+[data-theme="light"]{--glass-bg:rgba(255,255,255,var(--glass-opacity));--glass-border:rgba(0,0,0,var(--glass-border-opacity));--primary:#0284c7;--primary-glow:rgba(2,132,199,.25);--secondary:#7c3aed;--secondary-glow:rgba(124,58,237,.25);--accent:#e11d48;--accent-glow:rgba(225,29,72,.25);--text-primary:#0f172a;--text-secondary:rgba(15,23,42,.75);--text-muted:rgba(15,23,42,.45);--card-bg:rgba(255,255,255,calc(var(--glass-opacity)+.15));--input-bg:rgba(0,0,0,.05);--hover-bg:rgba(0,0,0,.06);--active-bg:rgba(2,132,199,.12);--scrollbar-track:rgba(0,0,0,.04);--scrollbar-thumb:rgba(0,0,0,.15);--option-bg:#fff;--option-text:#0f172a;--danger:#e11d48;--success:#059669;--badge-new:#0284c7;--shadow:0 16px 40px rgba(0,0,0,.12)}
 .glass{background:var(--glass-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
 .glass-strong{background:var(--card-bg);backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));-webkit-backdrop-filter:blur(max(var(--glass-blur),var(--glass-blur-min)));border:1px solid var(--glass-border);box-shadow:var(--shadow)}
-@media(max-width:768px){.glass,.glass-strong{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}}
+@media(max-width:768px){.glass,.glass-strong{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}}
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 </head>
 <body>
   <div id="app">
     <div id="space-bg"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
 
     <main id="main-content">
       <header id="top-bar">
@@ -51,15 +54,16 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
                 <defs>
                   <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#00d4ff"/>
-                    <stop offset="100%" style="stop-color:#50e3a0"/>
+                    <stop offset="50%" style="stop-color:#9d4edd"/>
+                    <stop offset="100%" style="stop-color:#f72585"/>
                   </linearGradient>
                 </defs>
-                <rect x="2" y="2" width="44" height="44" rx="10" fill="url(#logo-grad)" opacity="0.12"/>
-                <rect x="2" y="2" width="44" height="44" rx="10" fill="none" stroke="url(#logo-grad)" stroke-width="1.5"/>
+                <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#logo-grad)" opacity="0.15"/>
+                <rect x="2" y="2" width="44" height="44" rx="12" fill="none" stroke="url(#logo-grad)" stroke-width="1.8"/>
                 <polygon points="19,12 19,36 38,24" fill="url(#logo-grad)"/>
-                <rect x="7" y="8" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.5"/>
-                <rect x="7" y="18" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.5"/>
-                <rect x="7" y="28" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.5"/>
+                <rect x="7" y="8" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
+                <rect x="7" y="18" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
+                <rect x="7" y="28" width="2.5" height="5" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
               </svg>
               <span class="logo-text-stack">
                 <span class="logo-watch">WATCH</span>
@@ -85,8 +89,11 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
       </header>
       <div id="content-sections">
         <section id="section-home" class="content-section active">
+          <!-- Hero Spotlight Banner -->
+          <div id="hero-featured" class="hero-featured-container"></div>
+
           <div class="carousel-section">
-            <h2 class="section-title"><i class="fas fa-star"></i> Top Rated Movies</h2>
+            <h2 class="section-title"><i class="fas fa-fire"></i> Top Rated Movies</h2>
             <div class="carousel" data-type="movie" data-endpoint="top_rated"></div>
           </div>
           <div class="carousel-section">
@@ -94,19 +101,24 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
             <div class="carousel" data-type="tv" data-endpoint="top_rated"></div>
           </div>
           <div class="carousel-section">
-            <h2 class="section-title"><i class="fas fa-clock"></i> Newest Movies</h2>
+            <h2 class="section-title"><i class="fas fa-film"></i> Newest Movies</h2>
             <div class="carousel" data-type="movie" data-endpoint="now_playing"></div>
           </div>
           <div class="carousel-section">
-            <h2 class="section-title"><i class="fas fa-clock"></i> Newest Series</h2>
+            <h2 class="section-title"><i class="fas fa-tv"></i> Newest Series</h2>
             <div class="carousel" data-type="tv" data-endpoint="on_the_air"></div>
           </div>
         </section>
 
         <section id="section-movies" class="content-section">
+          <div class="section-header-banner">
+            <h1 class="page-title"><i class="fas fa-film"></i> Discover Movies</h1>
+            <p class="page-subtitle">Explore thousands of blockbuster hits, trending cinema, and hidden gems in Ultra HD.</p>
+          </div>
           <div class="browse-controls glass">
             <div class="search-wrapper">
-              <input type="text" id="movie-search" class="search-input" placeholder="Search movies...">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" id="movie-search" class="search-input" placeholder="Search movies by title, actor, or keyword...">
             </div>
             <div class="filter-ribbon">
               <select id="movie-genre" class="filter-select">
@@ -126,9 +138,9 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
               </select>
               <select id="movie-rating" class="filter-select">
                 <option value="">Rating</option>
-                <option value="7">7+</option>
-                <option value="8">8+</option>
-                <option value="9">9+</option>
+                <option value="7">7+ Score</option>
+                <option value="8">8+ Score</option>
+                <option value="9">9+ Score</option>
               </select>
               <select id="movie-year" class="filter-select">
                 <option value="">Year</option>
@@ -137,13 +149,21 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
           </div>
           <div id="movie-grid" class="results-grid"></div>
           <div id="movie-pagination"></div>
-          <div class="loading-indicator" id="movie-loading">Loading more...</div>
+          <div class="loading-indicator" id="movie-loading">
+            <div class="loading-spinner"></div>
+            <span>Loading titles...</span>
+          </div>
         </section>
 
         <section id="section-series" class="content-section">
+          <div class="section-header-banner">
+            <h1 class="page-title"><i class="fas fa-tv"></i> Explore TV Series</h1>
+            <p class="page-subtitle">Binge-watch award-winning shows, epic multi-season sagas, and trending releases.</p>
+          </div>
           <div class="browse-controls glass">
             <div class="search-wrapper">
-              <input type="text" id="series-search" class="search-input" placeholder="Search series...">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" id="series-search" class="search-input" placeholder="Search TV series by title, actor, or genre...">
             </div>
             <div class="filter-ribbon">
               <select id="series-genre" class="filter-select">
@@ -163,9 +183,9 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
               </select>
               <select id="series-rating" class="filter-select">
                 <option value="">Rating</option>
-                <option value="7">7+</option>
-                <option value="8">8+</option>
-                <option value="9">9+</option>
+                <option value="7">7+ Score</option>
+                <option value="8">8+ Score</option>
+                <option value="9">9+ Score</option>
               </select>
               <select id="series-year" class="filter-select">
                 <option value="">Year</option>
@@ -174,66 +194,107 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
           </div>
           <div id="series-grid" class="results-grid"></div>
           <div id="series-pagination"></div>
-          <div class="loading-indicator" id="series-loading">Loading more...</div>
+          <div class="loading-indicator" id="series-loading">
+            <div class="loading-spinner"></div>
+            <span>Loading series...</span>
+          </div>
         </section>
 
         <section id="section-library" class="content-section">
+          <div class="section-header-banner">
+            <h1 class="page-title"><i class="fas fa-bookmark"></i> Personal Collection</h1>
+            <p class="page-subtitle">Manage your watchlists, track watch history, and customize your cinephile profile.</p>
+          </div>
           <div class="library-tabs glass">
-            <button class="lib-tab active" data-tab="account"><i class="fas fa-user"></i> Account</button>
-            <button class="lib-tab" data-tab="bookmarks"><i class="fas fa-bookmark"></i> Bookmarks</button>
-            <button class="lib-tab" data-tab="history"><i class="fas fa-clock"></i> History</button>
+            <button class="lib-tab active" data-tab="account"><i class="fas fa-user-circle"></i> Account</button>
+            <button class="lib-tab" data-tab="bookmarks"><i class="fas fa-bookmark"></i> Watchlist</button>
+            <button class="lib-tab" data-tab="history"><i class="fas fa-history"></i> History</button>
           </div>
           <div id="library-account" class="lib-panel active">
             <div id="account-logged-out">
               <div class="auth-split">
                 <div class="auth-panel glass">
-                  <h3>Create Account</h3>
+                  <h3><i class="fas fa-user-plus"></i> Create Account</h3>
+                  <p class="auth-desc">Save your watchlist across devices and track your favorite series.</p>
                   <form id="register-form">
-                    <input type="text" id="reg-username" placeholder="Username" required>
-                    <input type="email" id="reg-email" placeholder="Email" required>
-                    <input type="password" id="reg-password" placeholder="Password" required>
-                    <button type="submit" class="btn-primary">Sign Up</button>
+                    <div class="form-group">
+                      <input type="text" id="reg-username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" id="reg-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" id="reg-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-arrow-right"></i> Sign Up</button>
                   </form>
                 </div>
                 <div class="auth-panel glass">
-                  <h3>Log In</h3>
+                  <h3><i class="fas fa-sign-in-alt"></i> Log In</h3>
+                  <p class="auth-desc">Welcome back! Access your personalized movie library.</p>
                   <form id="login-form">
-                    <input type="email" id="login-email" placeholder="Email" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
-                    <button type="submit" class="btn-primary">Log In</button>
+                    <div class="form-group">
+                      <input type="email" id="login-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-key"></i> Log In</button>
                   </form>
                 </div>
               </div>
             </div>
             <div id="account-logged-in" class="hidden">
               <div class="settings-panel glass">
+                <div class="user-badge-header">
+                  <span class="user-status-pill"><i class="fas fa-crown"></i> VIP Cinephile</span>
+                </div>
                 <div class="avatar-section">
                   <div id="avatar-preview" class="avatar-circle">
                     <img id="avatar-img" src="" alt="Avatar">
-                    <span id="avatar-placeholder">&#128100;</span>
+                    <span id="avatar-placeholder"><i class="fas fa-user"></i></span>
                   </div>
                   <label class="avatar-upload-btn btn-secondary">
-                    Upload Photo
+                    <i class="fas fa-camera"></i> Upload Photo
                     <input type="file" id="avatar-input" accept="image/*">
                   </label>
                 </div>
                 <form id="settings-form">
-                  <input type="text" id="settings-username" placeholder="Username">
-                  <input type="email" id="settings-email" placeholder="Email">
-                  <input type="password" id="settings-password" placeholder="New Password">
-                  <button type="submit" class="btn-primary">Save Settings</button>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="settings-username" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="settings-email" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="settings-password" placeholder="New Password">
+                  </div>
+                  <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Settings</button>
                 </form>
-                <button id="logout-btn" class="btn-danger">Log Out</button>
+                <button id="logout-btn" class="btn-danger"><i class="fas fa-sign-out-alt"></i> Log Out</button>
               </div>
             </div>
           </div>
           <div id="library-bookmarks" class="lib-panel">
             <div class="results-grid" id="bookmarks-grid"></div>
-            <p class="empty-state" id="bookmarks-empty">No bookmarks yet.</p>
+            <div class="empty-state-card" id="bookmarks-empty">
+              <i class="fas fa-bookmark empty-icon"></i>
+              <h3>Your Watchlist is Empty</h3>
+              <p>Bookmark movies and TV shows to easily find them later.</p>
+              <a href="#movies" class="btn-primary"><i class="fas fa-compass"></i> Discover Movies</a>
+            </div>
           </div>
           <div id="library-history" class="lib-panel">
             <div class="results-grid" id="history-grid"></div>
-            <p class="empty-state" id="history-empty">No history yet.</p>
+            <div class="empty-state-card" id="history-empty">
+              <i class="fas fa-history empty-icon"></i>
+              <h3>No Watch History</h3>
+              <p>Titles you watch will appear here so you can pick up right where you left off.</p>
+              <a href="#home" class="btn-primary"><i class="fas fa-play"></i> Start Watching</a>
+            </div>
           </div>
         </section>
 
@@ -243,11 +304,12 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
             <div class="detail-hero">
               <div class="detail-backdrop-wrap">
                 <img id="detail-backdrop" class="detail-backdrop" src="" alt="">
+                <div class="detail-backdrop-overlay"></div>
               </div>
               <div class="detail-poster-col">
                 <div class="detail-poster-wrapper">
                   <img id="detail-poster" class="detail-poster" src="" alt="">
-                  <button id="detail-bookmark" class="detail-bookmark-btn"><i class="far fa-bookmark"></i></button>
+                  <button id="detail-bookmark" class="detail-bookmark-btn" title="Add to Watchlist"><i class="far fa-bookmark"></i></button>
                   <div class="detail-rating-badge" id="detail-rating-badge">
                     <i class="fab fa-imdb"></i>
                     <span id="detail-rating-score"></span>
@@ -257,22 +319,26 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
               </div>
               <div class="detail-hero-info">
                 <h1 id="detail-title" class="detail-title"></h1>
+                <p id="detail-tagline" class="detail-tagline"></p>
 
                 <div class="detail-meta-pills" id="detail-meta-pills">
-                  <span class="meta-pill" id="detail-pill-type"><i class="fas fa-film"></i></span>
+                  <span class="meta-pill" id="detail-pill-type"><i class="fas fa-film"></i> Movie</span>
                   <span class="meta-sep">•</span>
-                  <span class="meta-pill" id="detail-pill-year"><i class="fas fa-calendar"></i></span>
+                  <span class="meta-pill" id="detail-pill-year"><i class="fas fa-calendar"></i> 2024</span>
                   <span class="meta-sep">•</span>
-                  <span class="meta-pill" id="detail-pill-duration"><i class="fas fa-clock"></i></span>
+                  <span class="meta-pill" id="detail-pill-duration"><i class="fas fa-clock"></i> 2h 15m</span>
                   <span class="meta-sep">•</span>
-                  <span class="meta-pill" id="detail-pill-language"><i class="fas fa-globe"></i></span>
+                  <span class="meta-pill" id="detail-pill-language"><i class="fas fa-globe"></i> English</span>
+                  <span class="meta-sep">•</span>
+                  <span class="meta-pill quality-badge">4K ULTRA HD</span>
                 </div>
 
                 <div class="detail-tags" id="detail-tags"></div>
 
                 <div class="detail-synopsis-wrap">
-                  <h3 class="detail-synopsis-heading"><i class="fas fa-quote-left"></i> Synopsis</h3>
-                  <p class="detail-overview" id="detail-overview">Loading...</p>
+                  <div id="detail-ratings-extra" class="detail-ratings-extra"></div>
+                  <h3 class="detail-synopsis-heading"><i class="fas fa-quote-left"></i> Storyline</h3>
+                  <p class="detail-overview" id="detail-overview">Loading overview...</p>
                 </div>
 
                 <div class="detail-details-strip" id="detail-details-strip"></div>
@@ -280,12 +346,12 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
             </div>
 
             <div class="detail-section" id="detail-cast-section">
-              <h3 class="detail-section-heading"><i class="fas fa-users"></i> Cast</h3>
+              <h3 class="detail-section-heading"><i class="fas fa-users"></i> Cast & Crew</h3>
               <div id="detail-cast" class="detail-cast-scroll"></div>
             </div>
 
             <div id="detail-series-module" class="detail-section hidden">
-              <h3 class="detail-section-heading"><i class="fas fa-list"></i> Seasons &amp; Episodes</h3>
+              <h3 class="detail-section-heading"><i class="fas fa-list"></i> Seasons & Episodes</h3>
               <div class="season-list" id="season-list"></div>
             </div>
 
@@ -297,17 +363,17 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
         </section>
 
         <section id="section-stream" class="content-section">
-          <button id="stream-back" class="detail-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+          <button id="stream-back" class="detail-back-btn"><i class="fas fa-arrow-left"></i> Back to Title</button>
           <div id="stream-content">
             <div class="stream-title-wrap">
-              <h2 id="stream-title" class="stream-title">Loading...</h2>
+              <h2 id="stream-title" class="stream-title">Loading Stream...</h2>
             </div>
 
             <div class="stream-episode-nav hidden" id="stream-episode-nav">
-              <label><i class="fas fa-list"></i> Season:
+              <label><i class="fas fa-layer-group"></i> Season:
                 <select id="stream-season" class="stream-select"></select>
               </label>
-              <label><i class="fas fa-list"></i> Episode:
+              <label><i class="fas fa-list-ol"></i> Episode:
                 <select id="stream-episode" class="stream-select"></select>
               </label>
             </div>
@@ -316,7 +382,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
               <iframe id="stream-iframe" class="stream-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
             </div>
 
-            <div class="stream-section-heading"><i class="fas fa-server"></i> Servers</div>
+            <div class="stream-section-heading"><i class="fas fa-server"></i> Select Streaming Server</div>
             <div class="stream-servers" id="stream-servers"></div>
           </div>
         </section>
@@ -331,7 +397,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
     </main>
   </div>
 
-  <script defer src="js/lib.js?v=3"></script>
-  <script defer src="js/bundle.js?v=3"></script>
+  <script defer src="js/lib.js?v=4"></script>
+  <script defer src="js/bundle.js?v=4"></script>
 </body>
 </html>
+
