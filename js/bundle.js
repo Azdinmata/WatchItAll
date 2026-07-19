@@ -38,7 +38,13 @@ const UI = {
 
     if (rating) {
       const badge = document.createElement('span');
-      badge.className = 'rating-badge-overlay';
+      const r = parseFloat(rating);
+      let colorClass = 'rating-low';
+      if (r >= 8) colorClass = 'rating-great';
+      else if (r >= 7) colorClass = 'rating-good';
+      else if (r >= 5) colorClass = 'rating-mid';
+      else if (r >= 3) colorClass = 'rating-poor';
+      badge.className = `rating-badge-overlay ${colorClass}`;
       badge.textContent = `\u2605 ${rating}`;
       card.appendChild(badge);
     }

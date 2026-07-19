@@ -423,10 +423,29 @@
   font-size: 0.7rem;
   font-weight: 700;
   background: rgba(0, 0, 0, 0.75);
-  color: #f5c518;
   z-index: 2;
   pointer-events: none;
   line-height: 1;
+}
+
+.rating-badge-overlay.rating-great {
+  color: #2ecc71;
+}
+
+.rating-badge-overlay.rating-good {
+  color: #50e3a0;
+}
+
+.rating-badge-overlay.rating-mid {
+  color: #f39c12;
+}
+
+.rating-badge-overlay.rating-poor {
+  color: #e67e22;
+}
+
+.rating-badge-overlay.rating-low {
+  color: #e74c3c;
 }
 
 [data-theme="dark"] .rating-badge {
