@@ -1386,14 +1386,6 @@ const STREAM_SERVERS = [
         : `https://autoembed.co/tv/tmdb/${id}-${s}-${e}`,
   },
   {
-    name: 'Embed.su',
-    embed: true,
-    url: (id, type, s, e) =>
-      type === 'movie'
-        ? `https://embed.su/embed/movie/${id}`
-        : `https://embed.su/embed/tv/${id}/${s}/${e}`,
-  },
-  {
     name: 'VidSrc.sbs',
     embed: true,
     url: (id, type, s, e) =>
@@ -1408,16 +1400,6 @@ const STREAM_SERVERS = [
       type === 'movie'
         ? `https://vidcore.org/embed/movie/${id}`
         : `https://vidcore.org/embed/tv/${id}/${s}/${e}`,
-  },
-  {
-    name: 'MultiEmbed',
-    embed: true,
-    url: (id, type, s, e, imdbId) => {
-      let u = `https://multiembed.mov/?video_id=${imdbId || id}`;
-      if (s) u += `&s=${s}`;
-      if (e) u += `&e=${e}`;
-      return u;
-    },
   },
 ];
 
