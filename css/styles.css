@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: space-between;
   height: var(--top-bar-height);
-  padding: 0 24px;
+  padding: 1px 24px;
   gap: 16px;
   background: var(--glass-bg);
   backdrop-filter: blur(max(var(--glass-blur), var(--glass-blur-min)));
