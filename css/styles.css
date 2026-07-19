@@ -411,6 +411,24 @@
   color: #000;
 }
 
+.rating-badge-overlay {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.75);
+  color: #f5c518;
+  z-index: 2;
+  pointer-events: none;
+  line-height: 1;
+}
+
 [data-theme="dark"] .rating-badge {
   color: #000;
 }

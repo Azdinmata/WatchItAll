@@ -36,6 +36,13 @@ const UI = {
     img.decoding = 'async';
     card.appendChild(img);
 
+    if (rating) {
+      const badge = document.createElement('span');
+      badge.className = 'rating-badge-overlay';
+      badge.textContent = `\u2605 ${rating}`;
+      card.appendChild(badge);
+    }
+
     if (showSeason && item.number_of_seasons) {
       const overlay = document.createElement('div');
       overlay.className = 'season-overlay';
@@ -61,20 +68,15 @@ const UI = {
     const meta = document.createElement('div');
     meta.className = 'poster-meta';
 
-    if (rating) {
-      const badge = document.createElement('span');
-      badge.className = 'rating-badge';
-      badge.textContent = `\u2605 ${rating}`;
-      meta.appendChild(badge);
-    }
-
     if (year) {
       const yr = document.createElement('span');
       yr.textContent = year;
       meta.appendChild(yr);
     }
 
-    info.appendChild(meta);
+    if (meta.children.length > 0) {
+      info.appendChild(meta);
+    }
     card.appendChild(info);
 
     card.addEventListener('click', () => {
