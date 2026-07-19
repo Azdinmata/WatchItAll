@@ -54,26 +54,38 @@
 .top-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   user-select: none;
 }
 
-.top-logo .logo-icon {
-  font-size: 1.4rem;
-  color: var(--primary);
-  text-shadow: 0 0 12px var(--primary-glow);
+.logo-svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .top-logo h1 {
+  font-family: 'Cinzel', serif;
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 900;
+  letter-spacing: 2px;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 1px;
   white-space: nowrap;
+  line-height: 1;
+}
+
+.top-logo h1 span {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .top-bar-right {
@@ -1968,10 +1980,12 @@
 
   .top-logo h1 {
     font-size: 1.05rem;
+    letter-spacing: 1px;
   }
 
-  .top-logo .logo-icon {
-    font-size: 1.2rem;
+  .logo-svg {
+    width: 26px;
+    height: 26px;
   }
 
   #bottom-nav {
@@ -2112,6 +2126,12 @@
 
   .top-logo h1 {
     font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .logo-svg {
+    width: 22px;
+    height: 22px;
   }
 
   #bottom-nav {

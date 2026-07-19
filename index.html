@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#0f0f14">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>WatchItAll</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://image.tmdb.org">
@@ -43,8 +46,21 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
       <header id="top-bar">
         <div class="top-bar-left">
           <div class="top-logo" id="logo-link">
-            <i class="fas fa-star logo-icon"></i>
-            <h1>WatchItAll</h1>
+            <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00d4ff"/>
+                  <stop offset="100%" style="stop-color:#50e3a0"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#logo-grad)" opacity="0.15"/>
+              <rect x="2" y="2" width="36" height="36" rx="8" fill="none" stroke="url(#logo-grad)" stroke-width="1.5"/>
+              <polygon points="16,10 16,30 32,20" fill="url(#logo-grad)"/>
+              <rect x="6" y="6" width="2" height="4" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
+              <rect x="6" y="14" width="2" height="4" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
+              <rect x="6" y="22" width="2" height="4" rx="1" fill="url(#logo-grad)" opacity="0.6"/>
+            </svg>
+            <h1>Watch<span>All</span></h1>
           </div>
         </div>
         <div class="top-bar-right">
