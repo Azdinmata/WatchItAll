@@ -4,7 +4,7 @@ const UI = {
 
     const { mediaType, showBookmark = true, showSeason = false, progress = null } = options;
     const type = mediaType || item.media_type || (item.first_air_date ? 'tv' : 'movie');
-    const posterUrl = TMDB.getPosterUrl(item.poster_path, 'medium');
+    const posterUrl = TMDB.getPosterUrl(item.poster_path, 'small');
     const title = item.title || item.name || 'Untitled';
     const year = (item.release_date || item.first_air_date || '').slice(0, 4);
     const rating = item.vote_average ? item.vote_average.toFixed(1) : null;
@@ -33,8 +33,7 @@ const UI = {
     img.src = posterUrl;
     img.alt = title;
     img.loading = 'lazy';
-    img.width = 180;
-    img.height = 270;
+    img.decoding = 'async';
     card.appendChild(img);
 
     if (showSeason && item.number_of_seasons) {
@@ -121,7 +120,11 @@ const UI = {
     const select = document.getElementById(selectId);
     if (!select) return;
     const currentVal = select.value;
-    select.innerHTML = `<option value="">All ${selectId.includes('genre') ? 'Genres' : ''}</option>`;
+    const defaultLabel = selectId.includes('genre') ? 'Genre'
+      : selectId.includes('language') ? 'Language'
+      : selectId.includes('rating') ? 'Rating'
+      : selectId.includes('year') ? 'Year' : 'All';
+    select.innerHTML = `<option value="">${defaultLabel}</option>`;
     items.forEach(item => {
       const opt = document.createElement('option');
       opt.value = item[valueKey];
@@ -586,8 +589,18 @@ const SeriesSection = {
   async loadGenres() {
     try {
       const genres = await TMDB.getGenres('tv');
-      UI.populateSelect('series-genre', genres);
-      UI.populateSidebar('series', genres);
+      const splitGenres = [];
+      const splitMap = { 'Action & Adventure': ['Action', 'Adventure'], 'Sci-Fi & Fantasy': ['Sci-Fi', 'Fantasy'], 'War & Politics': ['War', 'Politics'] };
+      genres.forEach(g => {
+        const names = splitMap[g.name];
+        if (names) {
+          names.forEach(n => splitGenres.push({ id: g.id, name: n }));
+        } else {
+          splitGenres.push(g);
+        }
+      });
+      UI.populateSelect('series-genre', splitGenres);
+      UI.populateSidebar('series', splitGenres);
     } catch (e) {
       console.error('Failed to load series genres:', e);
     }
@@ -884,6 +897,13 @@ const DetailSection = {
     const section = document.getElementById('section-detail');
     section.classList.add('active');
 
+    document.getElementById('detail-overview').textContent = 'Loading...';
+    document.getElementById('detail-tags').innerHTML = '';
+    document.getElementById('detail-cast').innerHTML = '';
+    document.getElementById('rec-carousel').innerHTML = '';
+    const strip = document.getElementById('detail-details-strip');
+    if (strip) strip.innerHTML = '';
+
     try {
       const [detail, credits, similar] = await Promise.all([
         TMDB.getDetail(type, id),
@@ -934,8 +954,6 @@ const DetailSection = {
     const poster = document.getElementById('detail-poster');
     poster.src = posterUrl || '';
     poster.alt = title;
-    poster.width = 220;
-    poster.height = 330;
 
     /* Backdrop */
     const backdropEl = document.getElementById('detail-backdrop');
@@ -1087,6 +1105,7 @@ const DetailSection = {
   renderDetails(detail, omdb) {
     const strip = document.getElementById('detail-details-strip');
     if (!strip) return;
+    strip.innerHTML = '';
 
     const rows = [];
 

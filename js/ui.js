@@ -33,8 +33,7 @@ const UI = {
     img.src = posterUrl;
     img.alt = title;
     img.loading = 'lazy';
-    img.width = 180;
-    img.height = 270;
+    img.decoding = 'async';
     card.appendChild(img);
 
     if (showSeason && item.number_of_seasons) {

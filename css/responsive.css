@@ -65,17 +65,25 @@
     font-size: 1.3rem;
   }
 
-  .poster-card {
-    width: 150px;
+  .carousel {
+    gap: 8px;
   }
 
-  .carousel {
-    gap: 12px;
+  .carousel .poster-card {
+    width: 120px;
+  }
+
+  .carousel .poster-card .poster-img {
+    aspect-ratio: 2 / 3;
   }
 
   .results-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .results-grid .poster-card {
+    width: 100%;
   }
 
   .filter-ribbon {
@@ -130,17 +138,29 @@
     padding: 12px;
   }
 
-  .poster-card {
-    width: 130px;
+  .carousel {
+    gap: 6px;
   }
 
-  .carousel {
-    gap: 10px;
+  .carousel .poster-card {
+    width: 105px;
+  }
+
+  .carousel .poster-card .poster-info {
+    padding: 5px;
+  }
+
+  .carousel .poster-card .poster-title {
+    font-size: 0.72rem;
   }
 
   .results-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .results-grid .poster-card {
+    width: 100%;
   }
 
   .poster-card .poster-info {
