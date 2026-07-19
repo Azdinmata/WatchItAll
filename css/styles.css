@@ -2136,3 +2136,75 @@
     padding: 12px;
   }
 }
+
+/* ============================================================
+   MOBILE SCROLL PERFORMANCE (max-width: 768px)
+   Strip GPU-heavy effects: blur, complex shadows, animations
+   ============================================================ */
+@media (max-width: 768px) {
+  #space-bg {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  #top-bar,
+  #bottom-nav,
+  .glass,
+  .glass-strong,
+  .content-section,
+  .icon-btn,
+  .scroll-arrow,
+  .browse-controls {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .poster-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .poster-card,
+  .bottom-nav-item,
+  .top-nav-item,
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .icon-btn,
+  .filter-select,
+  .custom-select-trigger {
+    transition: none !important;
+  }
+
+  .bottom-nav-item.active i {
+    text-shadow: none !important;
+  }
+
+  .top-nav-item.active i {
+    text-shadow: none !important;
+  }
+
+  .content-section {
+    animation: none !important;
+  }
+
+  .carousel {
+    contain: layout style;
+    will-change: auto;
+  }
+
+  .results-grid {
+    contain: layout style;
+  }
+
+  .detail-cast-scroll {
+    contain: layout style;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .season-episode-row {
+    contain: layout style;
+    -webkit-overflow-scrolling: auto;
+  }
+}

@@ -312,12 +312,10 @@ const UI = {
 
     const throttledUpdate = this.throttle(update, 100);
 
-    container.addEventListener('scroll', throttledUpdate);
-    window.addEventListener('resize', throttledUpdate);
+    container.addEventListener('scroll', throttledUpdate, { passive: true });
+    window.addEventListener('resize', throttledUpdate, { passive: true });
     const ro = new ResizeObserver(throttledUpdate);
     ro.observe(wrapper);
-    const mo = new MutationObserver(throttledUpdate);
-    mo.observe(container, { childList: true, subtree: true });
     scheduleUpdate();
   },
 
@@ -1302,7 +1300,7 @@ const DetailSection = {
       };
 
       const throttledUpdate = UI.throttle(updateArrows, 100);
-      epRow.addEventListener('scroll', throttledUpdate);
+      epRow.addEventListener('scroll', throttledUpdate, { passive: true });
       updateArrows();
 
       body.appendChild(arrowLeft);
